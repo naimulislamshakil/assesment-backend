@@ -1,0 +1,13 @@
+import express from 'express';
+import { addProduct, deleteProduct, editProduct, getAllProduct, getCategoryDistribution, getProductsAddedOverTime, getSingleProductById, getStockValueByProduct, } from '../controllers/productControllers';
+import { isAuthenticated } from '../middlewares/auth';
+const router = express.Router();
+router.post('/addProduct', isAuthenticated, addProduct);
+router.get('/getAllProduct', isAuthenticated, getAllProduct);
+router.delete('/deleteProduct/:id', isAuthenticated, deleteProduct);
+router.get('/getProductById/:id', isAuthenticated, getSingleProductById);
+router.put('/editProduct/:id', isAuthenticated, editProduct);
+router.get('/chart1', isAuthenticated, getProductsAddedOverTime);
+router.get('/chart2', isAuthenticated, getCategoryDistribution);
+router.get('/chart3', isAuthenticated, getStockValueByProduct);
+export default router;
